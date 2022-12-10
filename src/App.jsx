@@ -14,11 +14,7 @@ function App() {
         <Route path="/" element={<Navigate replace to="/home" />} />
         <Route path="/home" element={<Home />} />
         <Route path="/dentista/:id" element={<Detail />} />
-        <Route
-          path="/contacto
-        "
-          element={<Contact />}
-        />
+        <Route path="/contacto" element={<Contact />} />
         <Route path="/favs" element={<Favs />} />
       </Routes>
       <Footer />

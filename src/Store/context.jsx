@@ -34,7 +34,6 @@ export const GlobalContextProvider = (props) => {
     axios(API_DATA).then((res) => {
       dispatch({ type: "SET_DATA", data: res.data });
       setLoading(false);
-      console.log(res.data);
     });
   }, []);
 

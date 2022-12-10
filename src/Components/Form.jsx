@@ -23,9 +23,8 @@ const nameReducer = (state, action) => {
 };
 
 const Form = (props) => {
-  //Aqui deberan implementar el form completo con sus validaciones
-
   const [formIsValid, setFormIsValid] = useState(false);
+  const [infoSent, setInfoSent] = useState(false);
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
@@ -41,7 +40,6 @@ const Form = (props) => {
 
   useEffect(() => {
     const identifier = setTimeout(() => {
-      console.log("Checking form validity!");
       setFormIsValid(emailIsValid && nameIsValid);
     }, 500);
 
@@ -68,7 +66,7 @@ const Form = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, nameState.value);
+    setInfoSent(true);
   };
 
   return (
@@ -104,6 +102,9 @@ const Form = (props) => {
         </div>
         {(nameState.isValid === false || emailState.isValid === false) && (
           <p>Por favor verifique su información nuevamente</p>
+        )}
+        {infoSent && (
+          <p>{`Gracias ${nameState.value} te contactaremos cuando antes vía mail`}</p>
         )}
         <div className={classes.actions}>
           <button type="submit" className={classes.btn} disabled={!formIsValid}>
